@@ -19,7 +19,7 @@ function AppLayout() {
         <>
             <RioEncabezado />
             <RioSubMenuModulo items={itemsSubmenu} />
-            <Box sx={{ mt: 1 }}>
+            <Box sx={{ mt: 4 }}>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/localizacion" element={<LocalizacionView />} />
