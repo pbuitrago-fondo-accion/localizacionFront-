@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, CircularProgress, Alert, Chip, Dialog } from '@mui/material';
+import { Box, CircularProgress, Alert, Dialog } from '@mui/material';
 import RioDataTable from '../../components/RioDataTable';
 import { useConfirm } from '../../hooks/useConfirm';
 import {
@@ -48,17 +48,6 @@ export default function DepartamentoList() {
         { campo: 'departamentoCodigo', encabezado: 'Código', anchoFijo: 120 },
         { campo: 'departamentoNombre', encabezado: 'Nombre' },
         { campo: 'departamentoPaisId', encabezado: 'País', anchoFijo: 160, render: (valor: unknown) => paisNombre(valor), exportarValor: (valor: unknown) => paisNombre(valor) },
-        {
-            campo: 'logDesactivacionFecha',
-            encabezado: 'Estado',
-            anchoFijo: 110,
-            align: 'center',
-            alignEncabezado: 'center',
-            render: (valor: unknown) => (
-                <Chip label={valor == null ? 'ACTIVO' : 'INACTIVO'} color={valor == null ? 'success' : 'default'} size="small" sx={{ fontWeight: 700, fontSize: '0.7rem' }} />
-            ),
-            exportarValor: (valor: unknown) => valor == null ? 'ACTIVO' : 'INACTIVO',
-        },
     ];
 
     return (

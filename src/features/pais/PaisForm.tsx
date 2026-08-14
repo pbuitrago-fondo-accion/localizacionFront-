@@ -46,17 +46,17 @@ export default function PaisForm({ pais, onCancelar, onGuardar }: PaisFormProps)
 
     return (
         <>
-            <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pb: 1 }}>
-                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'success.main', color: 'white', py: 2, px: 3 }}>
+                <Typography variant="h6" sx={{ fontWeight: 400 }}>
                     {esEditar ? 'Editar País' : 'Nuevo País'}
                 </Typography>
-                <IconButton onClick={onCancelar} size="small" sx={{ border: '1px solid', borderColor: 'divider', borderRadius: '50%' }}>
+                <IconButton onClick={onCancelar} size="small" sx={{ color: 'white', border: '1px solid rgba(255,255,255,0.5)', borderRadius: '50%' }}>
                     <CloseIcon fontSize="small" />
                 </IconButton>
             </DialogTitle>
 
             <DialogContent>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, pt: 1 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, pt: 2 }}>
                     <TextField
                         label="Código ISO"
                         size="small"
@@ -66,7 +66,7 @@ export default function PaisForm({ pais, onCancelar, onGuardar }: PaisFormProps)
                         onChange={(e) => set('paisCodigoIso', e.target.value)}
                         error={!!errores.paisCodigoIso}
                         helperText={errores.paisCodigoIso}
-                        InputLabelProps={{ shrink: true }}
+                        slotProps={{ inputLabel: { shrink: true } }}
                     />
                     <TextField
                         label="Nombre"
@@ -78,7 +78,7 @@ export default function PaisForm({ pais, onCancelar, onGuardar }: PaisFormProps)
                         onChange={(e) => set('paisNombre', e.target.value)}
                         error={!!errores.paisNombre}
                         helperText={errores.paisNombre}
-                        InputLabelProps={{ shrink: true }}
+                        slotProps={{ inputLabel: { shrink: true } }}
                     />
                 </Box>
             </DialogContent>

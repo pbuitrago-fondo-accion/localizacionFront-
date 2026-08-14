@@ -1,8 +1,7 @@
-import { Box, Typography, Chip } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutlined";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
-import BlockIcon from "@mui/icons-material/Block";
 
 interface AuditoriaData {
   logCreacionUsuarioId?: number | null;
@@ -45,8 +44,6 @@ function Campo({ icono, label, valor }: { icono: React.ReactNode; label: string;
 }
 
 function RioRegistroAuditoria({ datos }: RioRegistroAuditoriaProps) {
-  const activo = datos.logDesactivacionFecha == null;
-
   return (
     <Box
       sx={{
@@ -81,22 +78,6 @@ function RioRegistroAuditoria({ datos }: RioRegistroAuditoriaProps) {
         icono={<EditCalendarIcon fontSize="small" />}
         label="Fecha modificación"
         valor={formatFecha(datos.logModificacionFecha)}
-      />
-      <Campo
-        icono={<BlockIcon fontSize="small" />}
-        label="Estado"
-        valor={
-          activo ? (
-            <Chip label="ACTIVO" color="success" size="small" sx={{ fontWeight: 700, fontSize: "0.7rem" }} />
-          ) : (
-            <Box>
-              <Chip label="INACTIVO" color="default" size="small" sx={{ fontWeight: 700, fontSize: "0.7rem", mr: 0.5 }} />
-              <Typography variant="caption" sx={{ color: "text.secondary" }}>
-                {formatFecha(datos.logDesactivacionFecha)}
-              </Typography>
-            </Box>
-          )
-        }
       />
     </Box>
   );

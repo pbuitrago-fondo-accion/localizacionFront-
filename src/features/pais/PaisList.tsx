@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, CircularProgress, Alert, Chip, Dialog } from '@mui/material';
+import { Box, CircularProgress, Alert, Dialog } from '@mui/material';
 import RioDataTable from '../../components/RioDataTable';
 import { useConfirm } from '../../hooks/useConfirm';
 import {
@@ -15,22 +15,6 @@ import DepartamentosPanel from '../departamento/DepartamentosPanel';
 const columnas = [
     { campo: 'paisCodigoIso', encabezado: 'Código ISO', anchoFijo: 140 },
     { campo: 'paisNombre', encabezado: 'Nombre' },
-    {
-        campo: 'logDesactivacionFecha',
-        encabezado: 'Estado',
-        anchoFijo: 110,
-        align: 'center' as const,
-        alignEncabezado: 'center' as const,
-        render: (valor: unknown) => (
-            <Chip
-                label={valor == null ? 'ACTIVO' : 'INACTIVO'}
-                color={valor == null ? 'success' : 'default'}
-                size="small"
-                sx={{ fontWeight: 700, fontSize: '0.7rem', letterSpacing: '0.03em' }}
-            />
-        ),
-        exportarValor: (valor: unknown) => valor == null ? 'ACTIVO' : 'INACTIVO',
-    },
 ] satisfies {
     campo: keyof Pais;
     encabezado: string;

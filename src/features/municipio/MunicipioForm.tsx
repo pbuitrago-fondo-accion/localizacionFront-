@@ -81,17 +81,17 @@ export default function MunicipioForm({ municipio, departamentoFijo, onCancelar,
 
     return (
         <>
-            <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pb: 1 }}>
-                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'success.main', color: 'white', py: 2, px: 3 }}>
+                <Typography variant="h6" sx={{ fontWeight: 700 }}>
                     {esEditar ? 'Editar Municipio' : 'Nuevo Municipio'}
                 </Typography>
-                <IconButton onClick={onCancelar} size="small" sx={{ border: '1px solid', borderColor: 'divider', borderRadius: '50%' }}>
+                <IconButton onClick={onCancelar} size="small" sx={{ color: 'white', border: '1px solid rgba(255,255,255,0.5)', borderRadius: '50%' }}>
                     <CloseIcon fontSize="small" />
                 </IconButton>
             </DialogTitle>
 
             <DialogContent>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, pt: 1 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, pt: 3 }}>
                     <TextField
                         label="Código DANE"
                         required
@@ -102,7 +102,7 @@ export default function MunicipioForm({ municipio, departamentoFijo, onCancelar,
                         onChange={(e) => set('municipioCodigoDane', e.target.value)}
                         error={!!errores.municipioCodigoDane}
                         helperText={errores.municipioCodigoDane}
-                        InputLabelProps={{ shrink: true }}
+                        slotProps={{ inputLabel: { shrink: true } }}
                     />
                     <TextField
                         label="Nombre"
@@ -114,7 +114,7 @@ export default function MunicipioForm({ municipio, departamentoFijo, onCancelar,
                         onChange={(e) => set('municipioNombre', e.target.value)}
                         error={!!errores.municipioNombre}
                         helperText={errores.municipioNombre}
-                        InputLabelProps={{ shrink: true }}
+                        slotProps={{ inputLabel: { shrink: true } }}
                     />
                     {!departamentoFijo && (
                         <>
@@ -125,7 +125,7 @@ export default function MunicipioForm({ municipio, departamentoFijo, onCancelar,
                                 onChange={(_, val) => handlePaisChange(val?.paisId ?? 0)}
                                 size="small"
                                 renderInput={(params) => (
-                                    <TextField {...params} label="País" InputLabelProps={{ shrink: true }} />
+                                    <TextField {...params} label="País" slotProps={{ inputLabel: { shrink: true } }} />
                                 )}
                                 noOptionsText="Sin opciones"
                             />
@@ -143,7 +143,7 @@ export default function MunicipioForm({ municipio, departamentoFijo, onCancelar,
                                         required
                                         error={!!errores.departamentoId}
                                         helperText={errores.departamentoId ?? (!selectedPaisId ? 'Seleccione primero un país' : '')}
-                                        InputLabelProps={{ shrink: true }}
+                                        slotProps={{ inputLabel: { shrink: true } }}
                                     />
                                 )}
                                 noOptionsText="Sin opciones"
